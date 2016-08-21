@@ -33,4 +33,43 @@ module.exports = ()=>{
         });
     });
 
+    server.delete('/project/:id', (req, res)=>{
+
+        const projectId = req.params.id;
+
+        const Project = mongoose.model('Project');
+
+        Project.findByIdAndRemove(projectId, (err, doc)=>{
+
+            if(!err){
+                // tukaj dobimo, se zadnjic, dokument, ki smo ga izbrisali
+                res.send(doc);
+            }else{
+                res.status(400).send(err);
+            }
+
+        });
+
+    });
+
+    server.put('/project/:id', (req, res)=>{
+
+        const projectId     = req.params.id;
+        const projectData   = req.body;
+
+        const Project = mongoose.model('Project');
+
+        //mora poiskati projekt po id-ju, nam ga update s podatki = projectData
+        // in pognati funkcijo, ko se vse uspesno zgodi
+
+        Project.findByIdAndUpdate(projectId, projectData, { new:true }, (err, doc)=>{
+
+           if(!err){
+               res.send(doc);
+           }else{
+               res.status(400).send(err);
+           }
+
+        });
+    });
 };
