@@ -2,18 +2,22 @@ const mongoose = require('mongoose');
 
 exports.init = ()=>{
 
-    mongoose.connect('mongodb://localhost/web-cms-assignment');
+   return new Promise((resolve, reject)=>{
 
-    mongoose.connection.on('error', (err)=>{
+       mongoose.connect('mongodb://localhost/web-cms-assignment');
 
-       console.log(err);
-        throw new Error(err);
-    });
+       mongoose.connection.on('error', (err)=>{
 
-    mongoose.connection.once('open', ()=>{
+           reject(err);
+       });
 
-       console.log('Connection open');
+       mongoose.connection.once('open', ()=>{
 
-    });
+           console.log('Connection open');
+           resolve();
+
+       });
+
+   });
 
 };
