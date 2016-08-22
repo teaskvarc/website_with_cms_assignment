@@ -9,7 +9,8 @@ const schema = new mongoose.Schema({
     status        : { type: Boolean, default: false },
     author        : String,
     dateCreated   : { type:Date, default: Date.now },
-    tags          : [String]
+    tags          : [String],
+    
 
 });
 
