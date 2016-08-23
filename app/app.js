@@ -22,6 +22,11 @@ angular.module('app').config(function($stateProvider, $urlRouterProvider) {
         templateUrl: 'partial/account/account.html',
         controller: 'AccountCtrl'
     });
+    $stateProvider.state('new-project', {
+        url: '/new-project',
+        templateUrl: 'partial/new-project/new-project.html',
+        controller: 'NewProjectCtrl'
+    });
     /* Add New States Above */
     $urlRouterProvider.otherwise('/home');
 
