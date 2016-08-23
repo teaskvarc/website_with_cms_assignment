@@ -31,7 +31,24 @@ angular.module('app').factory('projectService',function($http) {
             return promise;
 
         },
-        delete: function () {
+        delete: function (id) {
+
+            var promise = $http.delete('http://localhost:3010/project/'+id);
+
+            promise.then(function (res) {
+
+                //tako iz array-a vzamemo vrednost ven
+                angular.forEach(projectService.model.list, function (project, i) {
+
+                    if(project._id === id){
+                        projectService.model.list.splice(i, 1);
+                    }
+                });
+                console.log(res);
+            });
+
+
+            return promise;
 
         },
         update: function () {
