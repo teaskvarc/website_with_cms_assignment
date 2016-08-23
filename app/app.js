@@ -2,6 +2,26 @@ angular.module('app', ['ui.bootstrap','ui.utils','ui.router','ngAnimate']);
 
 angular.module('app').config(function($stateProvider, $urlRouterProvider) {
 
+    $stateProvider.state('home', {
+        url: '/home',
+        templateUrl: 'partial/home/home.html',
+        controller: 'HomeCtrl'
+    });
+    $stateProvider.state('projects', {
+        url: '/projects',
+        templateUrl: 'partial/projects/projects.html',
+        controller: 'ProjectsCtrl'
+    });
+    $stateProvider.state('articles', {
+        url: '/articles',
+        templateUrl: 'partial/articles/articles.html',
+        controller: 'ArticlesCtrl'
+    });
+    $stateProvider.state('account', {
+        url: '/account',
+        templateUrl: 'partial/account/account.html',
+        controller: 'AccountCtrl'
+    });
     /* Add New States Above */
     $urlRouterProvider.otherwise('/home');
 
