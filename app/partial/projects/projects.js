@@ -11,6 +11,11 @@ angular.module('app').controller('ProjectsCtrl',function(
 
         projectService.delete(id);
 
+    };
+
+    $scope.editClick = function (id) {
+
+        projectService.update(id);
     }
 
 });

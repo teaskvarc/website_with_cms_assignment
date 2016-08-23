@@ -19,6 +19,22 @@ module.exports = ()=>{
 
       });
 
+    server.get('/project/:id', (req, res)=>{
+
+        const projectId = req.params.id;
+
+        const Project = mongoose.model('Project');
+
+        Project.findById(projectId, (err, doc)=>{
+
+           if(!err){
+               res.send(doc);
+           }else{
+               res.status(400).send(err);
+           }
+        });
+    });
+
 
     // nacin s katerim iscemo po bazi - tukaj smo dolocili, da iscemo po: TITLE
     server.get('/project/search/:term', function (req, res) {
@@ -57,8 +73,6 @@ module.exports = ()=>{
             }else{
                 res.status(400).send(err);
             }
-
-
         });
     });
 

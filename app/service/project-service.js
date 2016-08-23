@@ -3,7 +3,8 @@ angular.module('app').factory('projectService',function($http) {
 	var projectService = {
 
         model:{
-            list:[]
+            list:[],
+            item:null
         },
 
         create: function (data) {
@@ -13,7 +14,20 @@ angular.module('app').factory('projectService',function($http) {
             return promise;
 
         },
-        getOne: function () {
+        getOne: function (id) {
+
+            var promise = $http.get('http://localhost:3010/project/'+id);
+
+            //to pride nazaj iz streznika
+            promise.then(function (res) {
+
+                console.log(res);
+                //gremo po en projekt in ta en projekt spravimo noter v: item
+                projectService.model.item = res.data;
+
+            });
+
+            return promise;
 
         },
         getList: function () {
@@ -32,6 +46,12 @@ angular.module('app').factory('projectService',function($http) {
 
         },
         delete: function (id) {
+
+            var c = confirm('Are you sure?');
+
+                if(c === false){
+                    return false;
+                }
 
             var promise = $http.delete('http://localhost:3010/project/'+id);
 

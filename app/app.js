@@ -34,6 +34,19 @@ angular.module('app').config(function($stateProvider, $urlRouterProvider) {
         templateUrl: 'partial/new-project/new-project.html',
         controller: 'NewProjectCtrl'
     });
+    $stateProvider.state('edit-project', {
+        url: '/edit-project/:id',
+        templateUrl: 'partial/edit-project/edit-project.html',
+        controller: 'EditProjectCtrl',
+        resolve:{
+
+            project: function (projectService, $stateParams) {
+
+                return projectService.getOne($stateParams.id);
+            }
+        }
+
+    });
     /* Add New States Above */
     $urlRouterProvider.otherwise('/home');
 

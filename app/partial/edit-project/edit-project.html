@@ -1,0 +1,21 @@
+<div>
+
+    <h1>EDIT PROJECT</h1>
+    <hr/>
+    <label>Title</label>
+    <input ng-model="project.title" type="text" class="form-control"/>
+    <br/>
+    <label>Content</label>
+    <textarea ng-model="project.content" class="form-control"></textarea>
+    <br/>
+    <label>Author</label>
+    <input ng-model="project.author" type="text" class="form-control" />
+    <br/>
+    <label>Link</label>
+    <input ng-model="project.link" type="text" class="form-control"/>
+    <br/>
+    <br/>
+    <div class="btn btn-success pull-left" ng-disabled="isCreating" ng-click="onSaveClick()">Save</div>
+
+</div>
+
