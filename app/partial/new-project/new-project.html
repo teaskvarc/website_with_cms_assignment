@@ -1,20 +1,20 @@
-<div xmlns="http://www.w3.org/1999/html">
+<div>
 
-    <h1>New Project</h1>
+    <h1>NEW PROJECT</h1>
     <hr/>
     <label>Title</label>
-    <input type="text" class="form-control"/>
+    <input ng-model="project.title" type="text" class="form-control"/>
     <br/>
     <label>Content</label>
-    <textarea class="form-control"></textarea>
+    <textarea ng-model="project.content" class="form-control"></textarea>
     <br/>
     <label>Link</label>
-    <input type="text" class="form-control"/>
+    <input ng-model="project.link" type="text" class="form-control"/>
     <br/>
     <label>Author</label>
-    <select class="form-control"></select>
+    <input ng-model="project.author" type="text" class="form-control" />
     <br/>
     <br/>
-    <div class="btn btn-success pull-right">Create</div>
+    <div class="btn btn-success pull-right" ng-click="onCreateClick()">Create</div>
 
 </div>

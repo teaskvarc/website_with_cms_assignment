@@ -26,9 +26,15 @@ module.exports = ()=>{
 
         const newProject = new Project(data);
 
-        newProject.save(()=>{
+        newProject.save(function(err){
 
-            res.send(newProject);
+            if(!err){
+                console.log(newProject);
+                res.send(newProject);
+            }else{
+                res.status(400).send(err);
+            }
+
 
         });
     });
