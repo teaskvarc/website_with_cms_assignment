@@ -10,11 +10,35 @@ module.exports = ()=>{
          //kako poiscemo vse projekte v bazi
           Project.find((err, docs)=>{
 
-             res.send(docs);
-
+             if(!err){
+                 res.send(docs);
+             }else{
+                 res.status(400).send(err);
+             }
           });
 
       });
+
+
+    // nacin s katerim iscemo po bazi - tukaj smo dolocili, da iscemo po: TITLE
+    server.get('/project/search/:term', function (req, res) {
+
+        const term = req.params.term;
+
+        const Project = mongoose.model('Project');
+
+        // i = da ne bo obcutljivo a je napisano z veliko ali malo crko
+        Project.find({title:{$regex: new RegExp(term, 'i')}}, function (err, docs) {
+
+           if(!err){
+               res.send(docs);
+           }else {
+               res.status(400).send(err);
+           }
+
+        });
+    });
+
 
     // route, ki bo vstavil v bazo projekt
     server.post('/project', (req,res)=>{
@@ -29,7 +53,6 @@ module.exports = ()=>{
         newProject.save(function(err){
 
             if(!err){
-                console.log(newProject);
                 res.send(newProject);
             }else{
                 res.status(400).send(err);
