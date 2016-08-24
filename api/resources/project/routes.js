@@ -102,8 +102,9 @@ module.exports = ()=>{
 
         const Project = mongoose.model('Project');
 
-        //mora poiskati projekt po id-ju, nam ga update s podatki = projectData
+        //mora poiskati projekt po id-ju, nam ga posodobi z novimi podatki = projectData
         // in pognati funkcijo, ko se vse uspesno zgodi
+        // { new: true } = da bo projekt posodobljen z novimi podatki
 
         Project.findByIdAndUpdate(projectId, projectData, { new:true }, (err, doc)=>{
 

@@ -16,6 +16,6 @@ angular.module('app').controller('ProjectsCtrl',function(
     $scope.editClick = function (id) {
 
         projectService.update(id);
-    }
+    };
 
 });

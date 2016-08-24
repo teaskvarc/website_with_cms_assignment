@@ -47,12 +47,6 @@ angular.module('app').factory('projectService',function($http) {
         },
         delete: function (id) {
 
-            var c = confirm('Are you sure?');
-
-                if(c === false){
-                    return false;
-                }
-
             var promise = $http.delete('http://localhost:3010/project/'+id);
 
             promise.then(function (res) {
@@ -67,12 +61,20 @@ angular.module('app').factory('projectService',function($http) {
                 console.log(res);
             });
 
-
             return promise;
-
         },
-        update: function () {
 
+        update: function (id, data) {
+
+            var promise = $http.put('http://localhost:3010/project/'+id, data);
+
+            promise.then(function (res) {
+
+                console.log(res);
+
+            });
+
+                return promise;
         }
 
     };
