@@ -1,4 +1,4 @@
-angular.module('app', ['ui.bootstrap','ui.utils','ui.router','ngAnimate']);
+angular.module('app', ['ui.bootstrap','ui.utils','ui.router','ngAnimate', 'ngFileUpload']);
 
 angular.module('app').config(function($stateProvider, $urlRouterProvider) {
 

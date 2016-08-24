@@ -1,7 +1,9 @@
 angular.module('app').controller('EditProjectCtrl',function(
     $scope,
     projectService,
-    $state
+    $state,
+    Upload
+
 ){
 
     // tukaj item, ki smo ga napolnili v project-service pripnemo na $scope
@@ -19,6 +21,22 @@ angular.module('app').controller('EditProjectCtrl',function(
 
         });
 
+    };
+
+    // kot prvi parameter je v html definiran: $file, zato ga moram tukaj prejeti
+    $scope.upload = function (file) {
+
+          Upload.upload({
+              url: 'http://localhost:3010/upload',
+              data: {file:file}
+          }).then(function (resp) {
+              console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
+          }, function (resp) {
+              console.log('Error status: ' + resp.status);
+          }, function (evt) {
+              var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+              console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
+          });
     };
 
 });

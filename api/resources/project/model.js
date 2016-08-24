@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const schema = new mongoose.Schema({
 
     title         : String,
-    content          : String,
+    content       : String,
     imageUrls     : [String],
     link          : String,
     status        : { type: Boolean, default: false },

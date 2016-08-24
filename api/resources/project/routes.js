@@ -1,9 +1,21 @@
 const mongoose  = require('mongoose');
 const server    = require('../../server').server;
+const multer    = require('multer');
+const upload     = multer({ dest: 'uploads/' });
 
 module.exports = ()=>{
 
-      server.get('/projects', (req, res)=>{
+    // za file upload
+
+    server.post('/upload', upload.single('file'), function (req, res, next) {
+
+        console.log(req.file);
+        res.sendStatus(200);
+
+    });
+
+
+    server.get('/projects', (req, res)=>{
 
           const Project = mongoose.model('Project');
 
