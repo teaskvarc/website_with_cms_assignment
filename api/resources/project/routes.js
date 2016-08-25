@@ -7,7 +7,7 @@ module.exports = ()=>{
 
     // za file upload
 
-    server.post('/upload', upload.single('file'), function (req, res, next) {
+    server.post('/upload', upload.single('file'), function (req, res) {
 
         console.log(req.file);
         res.sendStatus(200);
@@ -48,22 +48,17 @@ module.exports = ()=>{
     });
 
 
-    // nacin s katerim iscemo po bazi - tukaj smo dolocili, da iscemo po: TITLE
+    // SEARCH ! nacin s katerim iscemo po bazi - tukaj smo dolocili, da iscemo po: TITLE
     server.get('/project/search/:term', function (req, res) {
-
         const term = req.params.term;
-
         const Project = mongoose.model('Project');
-
         // i = da ne bo obcutljivo a je napisano z veliko ali malo crko
         Project.find({title:{$regex: new RegExp(term, 'i')}}, function (err, docs) {
-
            if(!err){
                res.send(docs);
            }else {
                res.status(400).send(err);
            }
-
         });
     });
 
