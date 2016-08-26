@@ -14,7 +14,7 @@ database.init()
     })
     .catch((err)=>{
 
-        console.log('Error:',err);
+        console.log('Error: ',err);
 
     });
 

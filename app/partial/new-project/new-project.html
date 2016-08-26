@@ -1,20 +1,38 @@
-<div>
 
-    <h1>NEW PROJECT</h1>
-    <hr/>
-    <label>Title</label>
-    <input ng-model="project.title" type="text" class="form-control"/>
-    <br/>
-    <label>Content</label>
-    <textarea ui-tinymce ng-model="project.content" class="form-control"></textarea>
-    <br/>
-    <label>Author</label>
-    <input ng-model="project.author" type="text" class="form-control" />
-    <br/>
-    <label>Link</label>
-    <input ng-model="project.link" type="text" class="form-control"/>
-    <br/>
-    <br/>
-    <div class="btn btn-success pull-left" ng-disabled="isCreating" ng-click="onCreateClick()">Create</div>
+    <div class="col-md-9">
 
-</div>
+            <h1>NEW PROJECT</h1>
+            <hr/>
+            <label>Title*</label>
+            <input ng-model="project.title" type="text" name="title" class="form-control" ng-minlength="4"/>
+            <br/>
+            <label>Content</label>
+            <textarea ui-tinymce ng-model="project.content" name="content" class="form-control"></textarea>
+            <br/>
+            <label>Author</label>
+            <input ng-model="project.author" name="author" type="text" class="form-control" />
+            <br/>
+            <label>Link</label>
+            <input ng-model="project.link" name="link" type="url" class="form-control"/>
+            <br/>
+            <div class="btn btn-success pull-left" ng-disabled="isCreating" ng-click="onCreateClick()">Create</div>
+
+    </div>
+
+    <img class="col-md-3">
+
+        <label>Cover Image</label>
+        <br/>
+        <div class="drop-zone" ngf-drop="uploadFiles($file)" ngf-drag-over-class="'dragover'">
+            <div class="btn btn-primary" ngf-select="uploadFiles($file)">Upload cover image<br/>or drag & drop</div>
+        </div>
+        <br/>
+        <div class="progress" ng-if="isUploading">
+            <div class="progress-bar progress-bar-striped active" role="progressbar"
+                 aria-valuenow="{{uploadData.progress}}" aria-valuemin="0" aria-valuemax="100"
+                 style="width: {{uploadData.progress}}%">{{uploadData.progress}}</div>
+        </div>
+
+        <img class="cover" ng-if="project.coverImage" src="http://localhost:3010/uploads/{{ project.coverImage }}"</img>
+
+    </div>

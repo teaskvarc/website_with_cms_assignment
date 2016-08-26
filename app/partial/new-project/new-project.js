@@ -1,13 +1,56 @@
 angular.module('app').controller('NewProjectCtrl',function(
     $scope,
     projectService,
-    $state
+    $state,
+    Upload
+
 ){
 
     //to je objekt, ki vsebuje podatke o nasem projektu
-    $scope.project = {};
+    $scope.project = {
 
-    $scope.isCreating = false;
+            coverImage:null
+    };
+
+    $scope.uploadData   = {
+
+            progress: 0
+
+    };
+
+    $scope.isCreating   = false;
+    $scope.isUploading  = false;
+
+
+
+    // kot prvi parameter je v html definiran: $file, zato ga moram tukaj prejeti
+    $scope.uploadFiles = function (file) {
+
+        $scope.isUploading = true;
+
+        Upload.upload({
+            url: 'http://localhost:3010/upload',
+            data: {
+                file: file
+            }
+        }).then(function (resp) {
+
+           $scope.project.coverImage = resp.data.filename;
+
+            $scope.isUploading = false;
+
+        }, function (resp) {
+            console.log('Error status: ' + resp.status);
+
+        }, function (evt) {
+
+            var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+            $scope.uploadData.progress = progressPercentage;
+        });
+    };
+
+
+
 
     $scope.onCreateClick = function () {
 
