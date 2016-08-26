@@ -1,6 +1,7 @@
 
     <div class="col-md-9">
 
+        <div ng-form name="myForm">
             <h1>NEW PROJECT</h1>
             <hr/>
             <label>Title*</label>
@@ -15,16 +16,18 @@
             <label>Link</label>
             <input ng-model="project.link" name="link" type="url" class="form-control"/>
             <br/>
-            <div class="btn btn-success pull-left" ng-disabled="isCreating" ng-click="onCreateClick()">Create</div>
-
+            <div class="btn btn-primary pull-left" ng-disabled="isCreating" ng-click="onCreateClick()">Create</div>
+        </div>
     </div>
 
     <img class="col-md-3">
-
+        <br/>
         <label>Cover Image</label>
         <br/>
+        <br/>
+        <br/>
         <div class="drop-zone" ngf-drop="uploadFiles($file)" ngf-drag-over-class="'dragover'">
-            <div class="btn btn-primary" ngf-select="uploadFiles($file)">Upload cover image<br/>or drag & drop</div>
+            <div class="btn btn-primary" ngf-select="uploadFiles($file)">Upload cover image</div>
         </div>
         <br/>
         <div class="progress" ng-if="isUploading">
