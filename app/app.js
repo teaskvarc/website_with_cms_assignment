@@ -54,6 +54,11 @@ angular.module('app').config(function($stateProvider, $urlRouterProvider) {
         }
 
     });
+    $stateProvider.state('new-article', {
+        url: '/new-article',
+        templateUrl: 'partial/new-article/new-article.html',
+        controller: 'NewArticleCtrl'
+    });
     /* Add New States Above */
     $urlRouterProvider.otherwise('/home');
 

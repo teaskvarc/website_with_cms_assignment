@@ -40,7 +40,7 @@ angular.module('app').controller('EditProjectCtrl',function(
 
             $scope.project.coverImage = resp.data.filename;
 
-            scope.isUploading = false;
+            $scope.isUploading = false;
 
         }, function (resp) {
             console.log('Error status: ' + resp.status);
