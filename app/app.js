@@ -29,7 +29,15 @@ angular.module('app').config(function($stateProvider, $urlRouterProvider) {
     $stateProvider.state('articles', {
         url: '/articles',
         templateUrl: 'partial/articles/articles.html',
-        controller: 'ArticlesCtrl'
+        controller: 'ArticlesCtrl',
+        resolve: {
+            
+            articles: function (articleService) {
+                
+                return articleService.getList();
+            }
+            
+        }
     });
     $stateProvider.state('account', {
         url: '/account',

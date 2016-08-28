@@ -1,5 +1,38 @@
 <div>
 
-    <h1>Articles</h1>
+    <h2>ARTICLES</h2>
+    <br/>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Key words</th>
+                <th>Author</th>
+                <th>Published</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="article in articles">
+                <td>
+                    {{article.title}}
+                </td>
+                <td>
+                    {{article.keyWords}}
+                </td>
+                <td>
+                    {{article.author}}
+                </td>
+                <td>
+                    {{article.published}}
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+    <br/>
+    <br/>
+
+    <div class="btn btn-success" ui-sref="new-article">Create new</div>
 
 </div>
