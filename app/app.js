@@ -31,12 +31,12 @@ angular.module('app').config(function($stateProvider, $urlRouterProvider) {
         templateUrl: 'partial/articles/articles.html',
         controller: 'ArticlesCtrl',
         resolve: {
-            
+
             articles: function (articleService) {
-                
+
                 return articleService.getList();
             }
-            
+
         }
     });
     $stateProvider.state('account', {
@@ -69,7 +69,14 @@ angular.module('app').config(function($stateProvider, $urlRouterProvider) {
     });
     $stateProvider.state('edit-article', {
         url: '/edit-article/:id',
-        templateUrl: 'partial/edit-article/edit-article.html'
+        templateUrl: 'partial/edit-article/edit-article.html',
+        resolve: {
+
+            article: function (articleService, $stateParams) {
+
+                return articleService.getOne($stateParams.id);
+            }
+        }
     });
     /* Add New States Above */
     $urlRouterProvider.otherwise('/home');

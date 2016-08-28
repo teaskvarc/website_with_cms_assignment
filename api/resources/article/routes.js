@@ -15,9 +15,7 @@ module.exports = ()=>{
         }else{
             res.status(400).send(err);
         }
-
       });
-
   });
 
     server.get('article/:id', (req, res)=>{
@@ -34,10 +32,7 @@ module.exports = ()=>{
             }else{
                 res.status(400).send(err);
             }
-
         });
-
-
     });
 
 
@@ -61,9 +56,24 @@ module.exports = ()=>{
 
     server.put('/article/:id', (req, res)=>{
 
+        const articleId = req.params.id;
+        const articleData = req.body;
 
+        const Article = mongoose.model('Article');
 
+        //mora poiskati projekt po id-ju, nam ga posodobi z novimi podatki = projectData
+        // in pognati funkcijo, ko se vse uspesno zgodi
+        // { new: true } = da bo projekt posodobljen z novimi podatki
 
+        Article.findByIdAndUpdate(articleId, articleData, {new: true},  (err, doc) =>{
+
+            if(!err){
+                res.send(doc);
+            }else{
+                res.status(400).send(err);
+            }
+
+        });
     });
 
     server.delete('/article/:id', (req, res)=>{
@@ -80,9 +90,7 @@ module.exports = ()=>{
             }else{
                 res.status(400).send(err);
             }
-
         });
-
 
     });
 
