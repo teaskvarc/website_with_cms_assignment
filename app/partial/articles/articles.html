@@ -1,5 +1,4 @@
 <div>
-
     <h2>ARTICLES</h2>
     <br/>
     <table class="table">
@@ -24,7 +23,7 @@
                     {{article.author}}
                 </td>
                 <td>
-                    {{article.published}}
+                    {{article.published | date:'dd.MM.yyyy'}}
                 </td>
             </tr>
         </tbody>
