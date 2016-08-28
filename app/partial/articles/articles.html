@@ -25,6 +25,10 @@
                 <td>
                     {{article.published | date:'dd.MM.yyyy'}}
                 </td>
+                <td>
+                    <div class="btn btn-success btn-xs" ui-sref="" >Edit</div>
+                    <div class="btn btn-warning btn-xs" ng-click="deleteClick(article._id)">Delete</div>
+                </td>
             </tr>
         </tbody>
 

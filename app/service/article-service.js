@@ -76,8 +76,6 @@ angular.module('app').factory('articleService',function($http) {
             });
 
             return promise;
-
-
         }
 
     };

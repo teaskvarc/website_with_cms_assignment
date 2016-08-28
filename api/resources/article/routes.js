@@ -41,8 +41,6 @@ module.exports = ()=>{
     });
 
 
-
-
     server.post('/article', (req,res)=>{
 
         const data = req.body;
@@ -70,6 +68,20 @@ module.exports = ()=>{
 
     server.delete('/article/:id', (req, res)=>{
 
+        const articleId = req.params.id;
+
+        const Article = mongoose.model('Article');
+
+        Article.findByIdAndRemove(articleId, (err, doc) =>{
+
+            if(!err){
+                // tukaj dobimo, se zadnjic, dokument, ki smo ga izbrisali
+                res.send(doc);
+            }else{
+                res.status(400).send(err);
+            }
+
+        });
 
 
     });
