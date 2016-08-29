@@ -70,6 +70,7 @@ angular.module('app').config(function($stateProvider, $urlRouterProvider) {
     $stateProvider.state('edit-article', {
         url: '/edit-article/:id',
         templateUrl: 'partial/edit-article/edit-article.html',
+        controller: 'EditArticleCtrl',
         resolve: {
 
             article: function (articleService, $stateParams) {

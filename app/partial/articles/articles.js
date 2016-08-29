@@ -10,7 +10,6 @@ angular.module('app').controller('ArticlesCtrl',function(
 
         articleService.delete(id);
     };
-
-   
+    
 
 });

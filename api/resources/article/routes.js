@@ -18,7 +18,7 @@ module.exports = ()=>{
       });
   });
 
-    server.get('article/:id', (req, res)=>{
+    server.get('/article/:id', (req, res)=>{
 
 
         const articleId = req.params.id;

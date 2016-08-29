@@ -12,9 +12,11 @@ exports.init = ()=>{
 
     return new Promise((resolve, reject)=>{
 
+        //s tem smo povedali express server-ju, da bomo uporabljali ejs-template
+        server.set('view engine', 'ejs');
+
         //vsak req, ki bo prisel na server, bo sel cez te tri middleware
         //sele potem gre req na routes, ki smo jih spisali
-
         server.use(bodyParser.json());
         server.use(bodyParser.urlencoded({ extended: true}));
         server.use(cors());
@@ -25,6 +27,12 @@ exports.init = ()=>{
             console.log('Server started');
             resolve();
         });
+
+        server.get('/', (req, res) =>{
+
+            res.render('landing');
+        });
+
 
     });
 
