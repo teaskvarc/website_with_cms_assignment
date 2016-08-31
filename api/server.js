@@ -3,6 +3,7 @@ const server            = express();
 const bodyParser        = require('body-parser');
 const database          = require ('./database');
 const cors              = require('cors');
+const mongoose          = require('mongoose');
 
 const PORT               = require('./config').PORT;
 
@@ -22,6 +23,9 @@ exports.init = ()=>{
         server.use(cors());
         server.use('/uploads', express.static('./uploads'));
 
+        server.use('/app', express.static('app'));
+        server.use('/static', express.static('static'));
+
         server.listen(PORT, ()=>{
 
             console.log('Server started');
@@ -33,7 +37,17 @@ exports.init = ()=>{
             res.render('landing');
         });
 
+        server.get('/articles', (req, res) =>{
 
+            const Article = mongoose.model('Article');
+
+            Article.find((err, articleDocs) =>{
+
+                res.render('articles', { articles: articleDocs });
+
+            });
+
+        });
     });
 
 };
