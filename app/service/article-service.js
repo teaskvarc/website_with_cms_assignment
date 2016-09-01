@@ -20,7 +20,7 @@ angular.module('app').factory('articleService',function(
 
         getOne: function (id) {
 
-            var promise = $http.get('http://localhost:3010/api/article/'+id);
+            var promise = $http.get(NET.API_URL+'/api/article/'+id);
 
             promise.then(function (res) {
 
@@ -37,7 +37,7 @@ angular.module('app').factory('articleService',function(
 
         getList: function () {
 
-            var promise = $http.get('http://localhost:3010/api/articles');
+            var promise = $http.get(NET.API_URL+'/api/articles');
 
             promise.then(function(res){
 
@@ -51,7 +51,7 @@ angular.module('app').factory('articleService',function(
 
         delete: function (id) {
 
-            var promise = $http.delete('http://localhost:3010/api/article/'+id);
+            var promise = $http.delete(NET.API_URL+'/api/article/'+id);
 
             promise.then(function(res){
 
@@ -70,7 +70,7 @@ angular.module('app').factory('articleService',function(
 
         update: function (id, data) {
 
-            var promise = $http.put('http://localhost:3010/api/article/'+id, data);
+            var promise = $http.put(NET.API_URL+'/api/article/'+id, data);
 
             promise.then(function(res){
 

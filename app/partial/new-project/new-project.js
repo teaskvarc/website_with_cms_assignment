@@ -2,7 +2,8 @@ angular.module('app').controller('NewProjectCtrl',function(
     $scope,
     projectService,
     $state,
-    Upload
+    Upload,
+    NET
 
 ){
 
@@ -29,7 +30,7 @@ angular.module('app').controller('NewProjectCtrl',function(
         $scope.isUploading = true;
 
         Upload.upload({
-            url: 'http://localhost:3010/upload',
+            url: NET.API_URL+'/upload',
             data: {
                 file: file
             }

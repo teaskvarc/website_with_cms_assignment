@@ -1,4 +1,8 @@
-angular.module('app').factory('projectService',function($http) {
+angular.module('app').factory('projectService',function(
+    $http,
+    NET
+
+) {
 
 	var projectService = {
 
@@ -9,14 +13,14 @@ angular.module('app').factory('projectService',function($http) {
 
         create: function (data) {
 
-            var promise = $http.post('http://localhost:3010/api/project', data);
+            var promise = $http.post(NET.API_URL+'/api/project', data);
 
             return promise;
 
         },
         getOne: function (id) {
 
-            var promise = $http.get('http://localhost:3010/api/project/'+id);
+            var promise = $http.get(NET.API_URL+'/api/project/'+id);
 
             //to pride nazaj iz streznika
             promise.then(function (res) {
@@ -32,7 +36,7 @@ angular.module('app').factory('projectService',function($http) {
         },
         getList: function () {
 
-            var promise = $http.get('http://localhost:3010/api/projects');
+            var promise = $http.get(NET.API_URL+'/api/projects');
 
             //tukaj napolnimo model.list
             promise.then(function (res) {
@@ -47,7 +51,7 @@ angular.module('app').factory('projectService',function($http) {
         },
         delete: function (id) {
 
-            var promise = $http.delete('http://localhost:3010/api/project/'+id);
+            var promise = $http.delete(NET.API_URL+'/api/project/'+id);
 
             promise.then(function (res) {
 
@@ -66,7 +70,7 @@ angular.module('app').factory('projectService',function($http) {
 
         update: function (id, data) {
 
-            var promise = $http.put('http://localhost:3010/api/project/'+id, data);
+            var promise = $http.put(NET.API_URL+'/api/project/'+id, data);
 
             promise.then(function (res) {
 
