@@ -9,14 +9,14 @@ angular.module('app').factory('projectService',function($http) {
 
         create: function (data) {
 
-            var promise = $http.post('http://localhost:3010/project', data);
+            var promise = $http.post('http://localhost:3010/api/project', data);
 
             return promise;
 
         },
         getOne: function (id) {
 
-            var promise = $http.get('http://localhost:3010/project/'+id);
+            var promise = $http.get('http://localhost:3010/api/project/'+id);
 
             //to pride nazaj iz streznika
             promise.then(function (res) {
@@ -32,7 +32,7 @@ angular.module('app').factory('projectService',function($http) {
         },
         getList: function () {
 
-            var promise = $http.get('http://localhost:3010/projects');
+            var promise = $http.get('http://localhost:3010/api/projects');
 
             //tukaj napolnimo model.list
             promise.then(function (res) {
@@ -47,7 +47,7 @@ angular.module('app').factory('projectService',function($http) {
         },
         delete: function (id) {
 
-            var promise = $http.delete('http://localhost:3010/project/'+id);
+            var promise = $http.delete('http://localhost:3010/api/project/'+id);
 
             promise.then(function (res) {
 
@@ -66,7 +66,7 @@ angular.module('app').factory('projectService',function($http) {
 
         update: function (id, data) {
 
-            var promise = $http.put('http://localhost:3010/project/'+id, data);
+            var promise = $http.put('http://localhost:3010/api/project/'+id, data);
 
             promise.then(function (res) {
 

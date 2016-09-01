@@ -1,0 +1,33 @@
+<!DOCTYPE>
+
+<html>
+<head>
+
+    <link href="/static/css/main.css" rel="stylesheet">
+
+</head>
+<body>
+
+
+    <h1>Projects</h1>
+
+    <div class="projects-container">
+
+        <% for(var i=0; i<projects.length; i++){ %>
+
+            <div class="project-container">
+                <div class="project-title"><%- projects[i].title %></div>
+                <br/>
+                <div class="project-author"><%- projects[i].author %></div>
+                <br/>
+                <div class="project-dateCreated"><%- moment(projects[i].dateCreated, 'dd:MM:yyyy') %></div>
+                <br/>
+                <a href="/project/<%- projects[i].id%>">Read more ...</a>
+                <hr/>
+            </div>
+        <%}%>
+
+    </div>
+
+</body>
+</html>

@@ -24,7 +24,7 @@ const upload = multer({ storage: storage });
 
 module.exports = ()=>{
 
-    server.post('/upload', upload.single('file'), function (req, res) {
+    server.post('/api/upload', upload.single('file'), function (req, res) {
 
         console.log(req.file);
         res.send(req.file);
@@ -32,7 +32,7 @@ module.exports = ()=>{
     });
 
 
-    server.get('/projects', (req, res)=>{
+    server.get('/api/projects', (req, res)=>{
 
           const Project = mongoose.model('Project');
 
@@ -48,7 +48,7 @@ module.exports = ()=>{
 
       });
 
-    server.get('/project/:id', (req, res)=>{
+    server.get('/api/project/:id', (req, res)=>{
 
         const projectId = req.params.id;
 
@@ -66,7 +66,7 @@ module.exports = ()=>{
 
 
     // SEARCH ! nacin s katerim iscemo po bazi - tukaj smo dolocili, da iscemo po: TITLE
-    server.get('/project/search/:term', function (req, res) {
+    server.get('/api/project/search/:term', function (req, res) {
         const term = req.params.term;
         const Project = mongoose.model('Project');
         // i = da ne bo obcutljivo a je napisano z veliko ali malo crko
@@ -81,7 +81,7 @@ module.exports = ()=>{
 
 
     // route, ki bo vstavil v bazo projekt
-    server.post('/project', (req,res)=>{
+    server.post('/api/project', (req,res)=>{
 
         //req, ko pride na server prinese s sabo body
         const data = req.body;
@@ -100,7 +100,7 @@ module.exports = ()=>{
         });
     });
 
-    server.delete('/project/:id', (req, res)=>{
+    server.delete('/api/project/:id', (req, res)=>{
 
         const projectId = req.params.id;
 
@@ -119,7 +119,7 @@ module.exports = ()=>{
 
     });
 
-    server.put('/project/:id', (req, res)=>{
+    server.put('/api/project/:id', (req, res)=>{
 
         const projectId     = req.params.id;
         const projectData   = req.body;

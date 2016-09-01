@@ -7,6 +7,8 @@ angular.module('app', [
     'ui.tinymce'
 ]);
 
+angular.module('app').constant('NET',{API_URL:'http://localhost:3010'});
+
 angular.module('app').config(function($stateProvider, $urlRouterProvider) {
 
     $stateProvider.state('home', {

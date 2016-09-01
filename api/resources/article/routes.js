@@ -5,7 +5,7 @@ const server = require('../../server').server;
 
 module.exports = ()=>{
     
-  server.get('/articles', (req, res)=>{
+  server.get('/api/articles', (req, res)=>{
 
       const Article = mongoose.model('Article');
 
@@ -18,7 +18,7 @@ module.exports = ()=>{
       });
   });
 
-    server.get('/article/:id', (req, res)=>{
+    server.get('/api/article/:id', (req, res)=>{
 
 
         const articleId = req.params.id;
@@ -36,7 +36,7 @@ module.exports = ()=>{
     });
 
 
-    server.post('/article', (req,res)=>{
+    server.post('/api/article', (req,res)=>{
 
         const data = req.body;
 
@@ -54,7 +54,7 @@ module.exports = ()=>{
         });
     });
 
-    server.put('/article/:id', (req, res)=>{
+    server.put('/api/article/:id', (req, res)=>{
 
         const articleId = req.params.id;
         const articleData = req.body;
@@ -76,7 +76,7 @@ module.exports = ()=>{
         });
     });
 
-    server.delete('/article/:id', (req, res)=>{
+    server.delete('/api/article/:id', (req, res)=>{
 
         const articleId = req.params.id;
 

@@ -1,4 +1,7 @@
-angular.module('app').factory('articleService',function($http) {
+angular.module('app').factory('articleService',function(
+    $http,
+    NET
+) {
 
 	var articleService = {
 
@@ -9,7 +12,7 @@ angular.module('app').factory('articleService',function($http) {
 
         create: function (data) {
 
-            var promise = $http.post('http://localhost:3010/article', data);
+            var promise = $http.post(NET.API_URL+'/api/article', data);
 
             return promise;
 
@@ -17,7 +20,7 @@ angular.module('app').factory('articleService',function($http) {
 
         getOne: function (id) {
 
-            var promise = $http.get('http://localhost:3010/article/'+id);
+            var promise = $http.get('http://localhost:3010/api/article/'+id);
 
             promise.then(function (res) {
 
@@ -34,7 +37,7 @@ angular.module('app').factory('articleService',function($http) {
 
         getList: function () {
 
-            var promise = $http.get('http://localhost:3010/articles');
+            var promise = $http.get('http://localhost:3010/api/articles');
 
             promise.then(function(res){
 
@@ -48,7 +51,7 @@ angular.module('app').factory('articleService',function($http) {
 
         delete: function (id) {
 
-            var promise = $http.delete('http://localhost:3010/article/'+id);
+            var promise = $http.delete('http://localhost:3010/api/article/'+id);
 
             promise.then(function(res){
 
@@ -67,7 +70,7 @@ angular.module('app').factory('articleService',function($http) {
 
         update: function (id, data) {
 
-            var promise = $http.put('http://localhost:3010/article/'+id, data);
+            var promise = $http.put('http://localhost:3010/api/article/'+id, data);
 
             promise.then(function(res){
 

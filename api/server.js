@@ -9,6 +9,8 @@ const PORT               = require('./config').PORT;
 
 exports.server = server;
 
+server.locals.moment = require('moment');
+
 exports.init = ()=>{
 
     return new Promise((resolve, reject)=>{
@@ -34,17 +36,57 @@ exports.init = ()=>{
 
         server.get('/', (req, res) =>{
 
-            res.render('landing');
+            res.render('landing', { pageName:'landing'});
         });
 
         server.get('/articles', (req, res) =>{
 
-            const Article = mongoose.model('Article');
+            var Article = mongoose.model('Article');
 
             Article.find((err, articleDocs) =>{
 
                 res.render('articles', { articles: articleDocs });
 
+            });
+
+        });
+
+        server.get('/article/:id', (req, res) =>{
+
+            var articleId = req.params.id;
+
+            var Article = mongoose.model('Article');
+
+            Article.findById(articleId, (err, doc) =>{
+
+                res.render('article', { article: doc });
+
+            });
+
+        });
+
+        
+        server.get('/projects', (req, res) =>{
+
+            var Project = mongoose.model('Project');
+
+            Project.find((err, projectDocs) =>{
+
+               res.render('projects', { projects: projectDocs });
+
+            });
+        });
+        
+        server.get('/project/:id', (req, res)=>{
+
+           var projectId = req.params.id;
+
+            var Project = mongoose.model('Project');
+
+            Project.findById(projectId, (err, doc)=>{
+
+                res.render('project', { project: doc });
+                
             });
 
         });
