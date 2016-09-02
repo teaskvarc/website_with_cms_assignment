@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.3.0",
     "body-parser": "^1.15.2",
     "cors": "^2.7.1",
     "crypto": "0.0.3",
@@ -20,6 +21,7 @@
     "momentjs": "^1.1.15",
     "mongoose": "^4.5.9",
     "multer": "^1.2.0",
+    "rand-token": "^0.2.1",
     "request": "^2.74.0",
     "serve-index": "^1.8.0"
   }

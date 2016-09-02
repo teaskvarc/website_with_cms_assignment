@@ -8,6 +8,7 @@ exports.init = ()=>{
 
        mongoose.connection.on('error', (err)=>{
 
+           console.log('Mongo error: ', err);
            reject(err);
        });
 

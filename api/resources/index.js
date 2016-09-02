@@ -6,5 +6,7 @@ module.exports = ()=>{
     require('./project/model');
     require('./project/routes')();
 
+    require('./account/model');
+    require('./account/routes')();
 
 };

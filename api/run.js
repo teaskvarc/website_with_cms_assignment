@@ -1,5 +1,5 @@
-var server      = require('./server');
-var database    = require('./database');
+const server      = require('./server');
+const database    = require('./database');
 const config    = require('./config');
 
 database.init()
@@ -14,7 +14,7 @@ database.init()
     })
     .catch((err)=>{
 
-        console.log('Error: ',err);
+        console.log('Init error: ',err);
 
     });
 
