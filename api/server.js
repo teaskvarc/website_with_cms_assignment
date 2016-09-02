@@ -4,6 +4,7 @@ const bodyParser        = require('body-parser');
 const database          = require ('./database');
 const cors              = require('cors');
 const mongoose          = require('mongoose');
+const expressValidator = require('express-validator');
 
 const PORT               = require('./config').PORT;
 
@@ -22,6 +23,7 @@ exports.init = ()=>{
         //sele potem gre req na routes, ki smo jih spisali
         server.use(bodyParser.json());
         server.use(bodyParser.urlencoded({ extended: true}));
+        server.use(expressValidator());
         server.use(cors());
         server.use('/uploads', express.static('./uploads'));
 
