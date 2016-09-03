@@ -8,7 +8,7 @@ const AccountModel = mongoose.model('Account');
 
 module.exports = ()=>{
 
-
+    // register
     server.post('/api/account', (req, res) =>{
 
         // na tak nacin naredim VALIDACIJO na body
@@ -55,10 +55,56 @@ module.exports = ()=>{
         });
     });
 
-    server.get('/api/account', (req, res) =>{
+    // login
+    server.post('/api/account/login', (req, res) =>{
 
+        //validacija
+        req.checkBody('email', 'Not a valid email').isEmail();
+        req.checkBody('password', 'Not a valid password').notEmpty().isLength({min:8});
 
+        var errors = req.validationErrors();
+        if(errors) return res.send(errors, 400);
+
+        //iscem account based on email
+
+        AccountModel.findOne({email:req.body.email})
+            .then((doc) =>{
+
+                if(!doc){
+                    res.send('Failed', 401);
+                }else{
+
+                    bcrypt.compare(req.body.password, doc.password, (err, match) =>{
+
+                        if(match){
+
+                            const token = randToken.generate(255);
+                            doc.tokens.push({
+                                value:token
+                            });
+
+                            doc.save()
+                                .then(()=>{
+                                    res.send({
+                                        token:token,
+                                        email:doc.email
+                                    });
+                                })
+                                .catch((err)=>{
+                                    res.send(err, 400);
+                                });
+                        }else{
+                            res.send('Failed', 401);
+                        }
+                    });
+
+                }
+            })
+            .catch((err)=>{
+                res.send(err, 400);
+            });
 
    });
+
 
 };
