@@ -4,7 +4,8 @@ const bodyParser        = require('body-parser');
 const database          = require ('./database');
 const cors              = require('cors');
 const mongoose          = require('mongoose');
-const expressValidator = require('express-validator');
+const expressValidator  = require('express-validator');
+const auth              = require('./helpers/auth/middleware');
 
 const PORT               = require('./config').PORT;
 

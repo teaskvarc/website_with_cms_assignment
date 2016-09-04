@@ -3,6 +3,8 @@ const server    = require('../../server').server;
 const bcrypt    = require('bcryptjs');
 const randToken = require ('rand-token');
 
+const auth = require('../../helpers/auth/middleware');
+
 const AccountModel = mongoose.model('Account');
 
 
@@ -105,6 +107,17 @@ module.exports = ()=>{
             });
 
    });
+
+
+    //check login
+    server.post('/api/account/checkLogin', auth, (req, res) =>{
+
+     // res.send('Account ' + req.account.email + ' logged in');
+        res.send(`${req.account.email} is logged in`);
+
+
+    });
+
 
 
 };
