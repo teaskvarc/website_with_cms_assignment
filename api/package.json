@@ -24,6 +24,7 @@
     "multer": "^1.2.0",
     "rand-token": "^0.2.1",
     "request": "^2.74.0",
-    "serve-index": "^1.8.0"
+    "serve-index": "^1.8.0",
+    "url-pattern": "^1.0.1"
   }
 }

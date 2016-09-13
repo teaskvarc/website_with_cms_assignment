@@ -1,18 +1,32 @@
+// tukaj se definirajo vloge (role) in kaj le te lahko pocnejo
 
 module.exports = [
 
     {
-        role        :'user',
-        methods     :['get', 'post', 'put', 'delete'],
-        path        : '/api/articles'
+        path: '/api/articles',
+        roles:[
+            {
+                type:'user',
+                methods: ['get', 'post', 'put', 'delete']
+
+            }
+
+        ]
 
     },
-
     {
-        role        :'user',
-        methods     :['get', 'post', 'put', 'delete'],
-        path        : '/api/account/checklogin'
+        path: '/api/account/checkLogin',
+        roles:[
+            {
+                type:'user',
+                methods:['get', 'post', 'put', 'delete']
+
+            }
+        ]
+
+
 
     }
+    
 
 ];
