@@ -9,6 +9,8 @@
 </head>
 <body>
 
+    <% include navigation.ejs %>
+
     <h1>Articles</h1>
 
     <div class="articles-container">
@@ -21,7 +23,7 @@
                     <br/>
                     <div class="article-author"> <%- articles[i].author %> </div>
                     <br/>
-                    <div class="article-published"> <%-  moment(articles[i].published).format('DD:MM:YYYY')  %> </div>
+                    <div class="article-published"> <%-  moment(articles[i].published).format('LL')  %> </div>
                     <br/>
 
                     <a href="/article/<%- articles[i].id %>"> Read more ... </a>

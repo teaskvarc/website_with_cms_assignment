@@ -8,6 +8,7 @@
 </head>
 <body>
 
+    <% include navigation.ejs %>
 
     <h1>Projects</h1>
 
@@ -20,7 +21,7 @@
                 <br/>
                 <div class="project-author"><%- projects[i].author %></div>
                 <br/>
-                <div class="project-dateCreated"><%- moment(projects[i].dateCreated, 'dd:MM:yyyy') %></div>
+                <div class="project-dateCreated"><%- moment(projects[i].dateCreated).format('LL') %></div>
                 <br/>
                 <a href="/project/<%- projects[i].id%>">Read more ...</a>
                 <hr/>
@@ -31,3 +32,4 @@
 
 </body>
 </html>
+

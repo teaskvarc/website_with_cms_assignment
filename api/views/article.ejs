@@ -12,9 +12,10 @@
     <p><%- article.keyWords %></p>
     <p><%- article.content %></p>
     <p><%- article.author %></p>
-    <p><%-  moment(article.published, 'dd:MM:yyyy') %></p>
+    <p><%-  moment(article.published).format('LL') %></p>
 
 
 
 </body>
 </html>
+
