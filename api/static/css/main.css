@@ -1,7 +1,15 @@
 body{
     margin: 0;
-    background-color: #ffffff;
-    font-family: Arial sans-serif;
+    background-color: #00caca;
+    font-family: 'Open Sans', sans-serif;
+    padding: 20px;
+}
+
+
+
+.title-container{
+
+
 }
 
 .nav-container{
@@ -12,23 +20,100 @@ body{
 }
 .nav-container .nav-button{
 
-    font-size: 16px;
+    font-size: 25px;
+    line-height: 1.6;
     display: inline-block;
     padding: 10px;
     border-radius: 4px;
-    background-color: #00a65a;
     color: #ffffff;
     margin: 5px;
+    font-family: 'Baloo', cursive;
 
 }
+
+.nav-container .nav-button:hover{
+
+    color: #aaa;
+
+}
+
 
 a{
     text-decoration: none;
-    color: green;
+}
+
+.title-container p{
+    font-size: 25px;
+
 }
 
 .main-title{
-    text-align: center;
+
     font-size: 40px;
-    margin-top: 100px;
+    margin-left: 60px;
 }
+.first-paragraph{
+    margin-left: 100px;
+    color:#FFFFFF;
+}
+.second-paragraph{
+    margin-left: 140px;
+}
+.third-paragraph{
+    margin-left: 170px;
+}
+.fourth-paragraph{
+    margin-left: 190px;
+}
+.fifth-paragraph{
+    margin-left: 220px;
+}
+.sixth-paragraph{
+    margin-left: 250px;
+}
+
+
+/*
+ARTICLE CONTAINER
+*/
+
+.article-container{
+
+    display: inline-block;
+    width: 49%;
+    padding: 20px;
+    box-sizing: border-box;
+    border: 2px solid rgba(170, 170, 170, 0.4);
+    border-top: 3px solid rgba(170, 170, 170, 0.6);
+    margin-bottom: 10px;
+
+}
+
+.article-title{
+
+    font-size: 23px;
+    line-height: 1.6;
+}
+
+
+/*
+Project CONTAINER
+*/
+
+.project-container{
+
+    display: inline-block;
+    width: 49%;
+    box-sizing: border-box;
+    padding: 20px;
+    border: 2px solid rgba(170,170,170, 0.4);
+    margin-bottom: 10px;
+}
+
+
+.project-title{
+
+    font-size: 23px;
+    line-height: 1.6;
+}
+
