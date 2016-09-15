@@ -7,6 +7,8 @@ angular.module('app').controller('NewProjectCtrl',function(
 
 ){
 
+    $scope.NET = NET;
+
     //to je objekt, ki vsebuje podatke o nasem projektu
     $scope.project = {
 

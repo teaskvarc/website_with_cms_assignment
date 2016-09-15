@@ -35,6 +35,6 @@
                  style="width: {{uploadData.progress}}%">{{uploadData.progress}}</div>
         </div>
 
-        <img class="cover" ng-if="project.coverImage" src="http://localhost:3010/uploads/{{ project.coverImage }}" />
+        <img class="cover" ng-if="project.coverImage" src="{{NET.API_URL}}/uploads/{{ project.coverImage }}" />
 
     </div>

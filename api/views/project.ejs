@@ -9,8 +9,11 @@
 
     <h2><%- project.title %></h2>
     <p><%- project.content %></p>
+    <% if(project.coverImage){ %>
     <img height="200px" width="200px" src="/uploads/<%- project.coverImage %>">
-    <p><%- project.link %></p>
+    <%}%>
+    <a href="<%- project.link %>"><%- project.link %></a>
+
 
 
 </body>

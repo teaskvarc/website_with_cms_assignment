@@ -27,13 +27,17 @@ angular.module('app').controller('EditProjectCtrl',function(
 
     };
 
+    $scope.uploadData = {
+
+    };
+
     $scope.uploadFiles = function (file) {
 
         $scope.isUploading = true;
 
         Upload.upload({
 
-            url: NET.API_URL+'/upload',
+            url: NET.API_URL+'/api/upload',
             data: {
                 file: file
             }

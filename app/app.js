@@ -11,10 +11,28 @@ angular.module('app').constant('NET',{API_URL:'http://localhost:3010'});
 
 angular.module('app').config(function($stateProvider, $urlRouterProvider) {
 
-    $stateProvider.state('home', {
-        url: '/home',
-        templateUrl: 'partial/home/home.html',
-        controller: 'HomeCtrl'
+    $stateProvider.state('login',{
+       'cover@':{
+           templateUrl:'partial/login/login.html',
+           controller:'LoginCtrl'
+       }
+    });
+
+    $stateProvider.state('app', {
+        abstract:true,
+        resolve:{
+            auth:function(){
+
+            }
+        }
+    });
+
+    $stateProvider.state('app.home', {
+        'content@': {
+            url: '/home',
+            templateUrl: 'partial/home/home.html',
+            controller: 'HomeCtrl'
+        }
     });
     $stateProvider.state('projects', {
         url: '/projects',
