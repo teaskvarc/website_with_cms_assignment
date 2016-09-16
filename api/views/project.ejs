@@ -6,12 +6,33 @@
 <body>
 
 
-    <h2><%- project.title %></h2>
-    <p><%- project.content %></p>
-    <% if(project.coverImage){ %>
-    <img height="200px" width="200px" src="/uploads/<%- project.coverImage %>">
-    <%}%>
-    <a href="<%- project.link %>"><%- project.link %></a>
+<div class="single-project-container">
+
+    <h2 class="single-project-title"><%- project.title %></h2>
+
+    <div class="single-project-content-container">
+        <b>About project:</b>
+        <p><%- project.content %></p>
+        <p><b>Author(s): </b><%- project.author %></p>
+        <p><b>Finished: </b><%- moment(project.dateCreated).format('LL') %></p>
+        <p class="project-linktext"><b>Take a look at project's website: </b><a href="<%- project.link %>"><%- project.link %></a></p>
+        <p><b>Project logo / cover image: </b></p>
+        <br/>
+        <% if(project.coverImage){ %>
+        <img height="300px" width="300px" src="/uploads/<%- project.coverImage %>">
+        <%}%>
+    </div>
+    <br/>
+
+
+
+
+</div>
+<hr/>
+<div class="back-button">
+    <a href="/projects" class="back-button">Back to Projects</a>
+</div>
+
 
 
 

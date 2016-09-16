@@ -19,11 +19,11 @@
 
                 <div class="project-title"><b><%- projects[i].title %></b></div>
                 <br/>
-                <div class="project-author">Author(s): <%- projects[i].author %></div>
+                <div class="project-author"><b>Author(s):</b> <%- projects[i].author %></div>
                 <br/>
-                <div class="project-dateCreated">Finished: <%- moment(projects[i].dateCreated).format('LL') %></div>
+                <div class="project-dateCreated"><b>Finished:</b> <%- moment(projects[i].dateCreated).format('LL') %></div>
                 <br/>
-                <a class="read-more" href="/project/<%- projects[i].id%>"> MORE ...</a>
+                <a class="read-more" href="/project/<%- projects[i].id%>"> MORE ABOUT PROJECT ...</a>
 
             </div>
         <%}%>

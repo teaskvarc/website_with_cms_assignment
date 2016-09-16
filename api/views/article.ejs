@@ -8,13 +8,24 @@
 </head>
 <body>
 
+<div class="single-article-container">
 
-    <h3><%- article.title %></h3>
-    <p><%- article.keyWords %></p>
-    <p><%- article.content %></p>
-    <p><%- article.author %></p>
-    <p><%-  moment(article.published).format('LL') %></p>
+    <h3 class="single-article-title"><%- article.title %></h3>
+    <p ><b>Key words: </b><%- article.keyWords %></p>
+    <br/>
+    <div class="single-article-content-container">
+        <p><%- article.content %></p>
+    </div>
+    <br/>
+    <p>Published: <b><%-  moment(article.published).format('LL') %></b> by <b><%- article.author %></b></p>
 
+</div>
+
+<hr/>
+
+<div class="back-button">
+    <a href="/articles" class="back-button">Back to Articles</a>
+</div>
 
 
 </body>

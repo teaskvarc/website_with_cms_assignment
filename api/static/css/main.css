@@ -80,6 +80,8 @@ ARTICLE CONTAINER
     border-top: 3px solid rgba(170, 170, 170, 0.6);
     margin-bottom: 10px;
     text-align: center;
+    background-color: rgba(170, 170, 170, 0.2);
+
 }
 .article-title{
 
@@ -87,6 +89,35 @@ ARTICLE CONTAINER
     line-height: 1.6;
     font-family: 'Baloo', cursive
 }
+
+.single-article-container{
+
+   text-align: center;
+    margin-top: 50px;
+
+}
+.single-article-title{
+
+    font-family: 'Baloo', cursive;
+    font-size: 30px;
+
+}
+.single-article-content-container{
+
+
+    margin: 0 50px;
+    text-align: justify;
+}
+.back-button{
+
+    font-family: 'Baloo', cursive;
+    color: #ffffff;
+    font-size: 20px;
+    text-align: center;
+
+}
+
+
 .read-more{
     color: #ffffff;
 }
@@ -109,17 +140,12 @@ ARTICLE CONTAINER
 }
 
 .page-list li a:hover{
-
     color: #aaa;
-
 }
 
 .pageNum{
-
-    font-family: 'Baloo', cursive;
-    color: #aaa;
+    color: #ffffff;
     font-size: 20px;
-
 }
 
 /*
@@ -136,6 +162,7 @@ Project CONTAINER
     border-top: 3px solid rgba(170, 170, 170, 0.6);
     margin-bottom: 10px;
     text-align: center;
+    background-color: rgba(170, 170, 170, 0.2);
 }
 
 
@@ -144,5 +171,30 @@ Project CONTAINER
     font-size: 20px;
     line-height: 1.6;
     font-family: 'Baloo', cursive
+}
+
+.single-project-container{
+
+    text-align: center;
+    margin: 50px;
+
+}
+
+.project-linktext{
+
+    text-align: left;
+}
+
+.single-project-title{
+
+    font-family: 'Baloo', cursive;
+    font-size: 30px;
+}
+
+.single-project-content-container{
+
+    width: 90%;
+    margin-left: 50px;
+    text-align: justify;
 }
 
