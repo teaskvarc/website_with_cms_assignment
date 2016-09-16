@@ -5,13 +5,6 @@ body{
     padding: 20px;
 }
 
-
-
-.title-container{
-
-
-}
-
 .nav-container{
 
     font-size: 0;
@@ -20,7 +13,7 @@ body{
 }
 .nav-container .nav-button{
 
-    font-size: 25px;
+    font-size: 40px;
     line-height: 1.6;
     display: inline-block;
     padding: 10px;
@@ -34,9 +27,13 @@ body{
 .nav-container .nav-button:hover{
 
     color: #aaa;
-
 }
 
+.nav-container .selected{
+
+    color: #aaa;
+
+}
 
 a{
     text-decoration: none;
@@ -58,6 +55,7 @@ a{
 }
 .second-paragraph{
     margin-left: 140px;
+
 }
 .third-paragraph{
     margin-left: 170px;
@@ -94,6 +92,33 @@ ARTICLE CONTAINER
     font-size: 23px;
     line-height: 1.6;
 }
+
+.page-list{
+
+    text-align: center;
+}
+
+.page-list li{
+
+    font-size: 30px;
+    display: inline-block;
+    font-family: 'Baloo', cursive;
+    padding: 10px;
+
+}
+.page-list li a{
+
+    color: white;
+
+}
+
+.page-list li a:hover{
+
+    color: #aaa;
+
+}
+
+
 
 
 /*

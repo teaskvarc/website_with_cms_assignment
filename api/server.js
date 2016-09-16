@@ -46,9 +46,25 @@ exports.init = ()=>{
 
             var Article = mongoose.model('Article');
 
+            var pageNum = req.query.page;
+            var postCount = 4;
+
+
             Article.find((err, articleDocs) =>{
 
-                res.render('articles', { articles: articleDocs });
+                //najprej preberemo dolzino clankov
+                var pageLength = Math.ceil(articleDocs.length / postCount);
+
+                var page = articleDocs.splice(pageNum * postCount, postCount);
+
+                res.render('articles', {
+                    articles        : page,
+                    numberOfPages   : pageLength,
+                    pageNum         : pageNum,
+                    pageName        : 'articles'    // podatek, da ve kateri gumb mora obarvati v navigation
+
+                });
+
 
             });
 
@@ -73,9 +89,22 @@ exports.init = ()=>{
 
             var Project = mongoose.model('Project');
 
+            var pageNum = req.query.page;
+            var projectCount = 4;
+
             Project.find((err, projectDocs) =>{
 
-               res.render('projects', { projects: projectDocs });
+                var pageLength = Math.ceil(projectDocs.length / projectCount);
+                var page = projectDocs.splice(pageNum * projectCount, projectCount);
+
+               res.render('projects', {
+                   projects         : page,
+                   numberOfPages    : pageLength,
+                   pageNum          : pageNum,
+                   pageName         :'projects'
+
+
+               });
 
             });
         });

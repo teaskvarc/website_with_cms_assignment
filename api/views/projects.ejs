@@ -9,8 +9,6 @@
 
     <% include navigation.ejs %>
 
-    <h1>Projects</h1>
-
     <div class="projects-container">
 
         <% for(var i=0; i<projects.length; i++){ %>
@@ -25,9 +23,28 @@
                 <br/>
                 <a class="project-more" href="/project/<%- projects[i].id%>"> MORE ...</a>
 
-
             </div>
         <%}%>
+
+        <ul class="page-list">
+
+            <% for(var i=0; i <  numberOfPages; i++ ){ %>
+
+            <li>
+                <% if(pageNum !== i) { %>
+
+                <!-- Page link -->
+                <a href="?page=<%- i %>"><%- i %></a>
+
+                <% }else{ %>
+
+                <!-- Current page button -->
+                <p><%- i %></p>
+                <% } %>
+            </li>
+
+            <% } %>
+        </ul>
 
     </div>
 
