@@ -42,15 +42,17 @@
   <script src="partial/new-article/new-article.js"></script>
   <script src="service/article-service.js"></script>
   <script src="partial/edit-article/edit-article.js"></script>
+  <script src="partial/login/login.js"></script>gr
+  <script src="service/login-service.js"></script>
   <!-- Add New Component JS Above -->
 
 
 
   <div ng-include="'partial/sidebar/sidebar.html'"></div>
 
-  <div ui-view="cover"></div>
+  <div ui-view="cover" class="cover-view"></div>
 
-  <div class="main-view" ui-view="main"></div>
+  <div ui-view="main" class="main-view"></div>
 
 </body>
 </html>

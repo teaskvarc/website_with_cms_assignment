@@ -13,6 +13,7 @@ angular.module('app').config(function($stateProvider, $urlRouterProvider) {
 
     $stateProvider.state('login',{
        'cover@':{
+           url:'/login',
            templateUrl:'partial/login/login.html',
            controller:'LoginCtrl'
        }
