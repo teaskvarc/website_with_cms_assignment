@@ -13,7 +13,7 @@ angular.module('app').controller('NewArticleCtrl',function(
             .then(function (res) {
                 console.log(res);
 
-                $state.go('articles');
+                $state.go('app.articles');
 
             });
 

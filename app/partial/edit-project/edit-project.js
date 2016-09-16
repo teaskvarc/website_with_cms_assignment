@@ -7,6 +7,8 @@ angular.module('app').controller('EditProjectCtrl',function(
 
 ){
 
+    $scope.NET = NET;
+    
     $scope.isCreating   = false;
     $scope.isUploading  = false;
 
@@ -21,7 +23,7 @@ angular.module('app').controller('EditProjectCtrl',function(
       projectService.update($scope.project._id, $scope.project)
         .then(function (res) {
 
-            $state.go('projects');
+            $state.go('app.projects');
 
         });
 

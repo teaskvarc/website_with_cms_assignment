@@ -15,7 +15,7 @@ angular.module('app').controller('EditArticleCtrl',function(
         articleService.update($scope.article._id, $scope.article)
             .then(function (res) {
 
-                $state.go('articles');
+                $state.go('app.articles');
             });
     };
 

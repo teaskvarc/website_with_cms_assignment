@@ -34,69 +34,92 @@ angular.module('app').config(function($stateProvider, $urlRouterProvider) {
             controller: 'HomeCtrl'
         }
     });
-    $stateProvider.state('projects', {
-        url: '/projects',
-        templateUrl: 'partial/projects/projects.html',
-        controller: 'ProjectsCtrl',
-        resolve: {
-            projects: function (projectService) {
+    $stateProvider.state('app.projects', {
+        'content@': {
 
-                return projectService.getList();
+            url: '/projects',
+            templateUrl: 'partial/projects/projects.html',
+            controller: 'ProjectsCtrl',
+            resolve: {
+                projects: function (projectService) {
 
+                    return projectService.getList();
+
+                }
             }
         }
     });
-    $stateProvider.state('articles', {
-        url: '/articles',
-        templateUrl: 'partial/articles/articles.html',
-        controller: 'ArticlesCtrl',
-        resolve: {
+    $stateProvider.state('app.articles', {
+        'content@': {
 
-            articles: function (articleService) {
+            url: '/articles',
+            templateUrl: 'partial/articles/articles.html',
+            controller: 'ArticlesCtrl',
+            resolve: {
 
-                return articleService.getList();
-            }
+                articles: function (articleService) {
 
-        }
-    });
-    $stateProvider.state('account', {
-        url: '/account',
-        templateUrl: 'partial/account/account.html',
-        controller: 'AccountCtrl'
-    });
-    $stateProvider.state('new-project', {
-        url: '/new-project',
-        templateUrl: 'partial/new-project/new-project.html',
-        controller: 'NewProjectCtrl'
-    });
-    $stateProvider.state('edit-project', {
-        url: '/edit-project/:id',
-        templateUrl: 'partial/edit-project/edit-project.html',
-        controller: 'EditProjectCtrl',
-        resolve:{
-
-            project: function (projectService, $stateParams) {
-
-                return projectService.getOne($stateParams.id);
+                    return articleService.getList();
+                }
             }
         }
 
     });
-    $stateProvider.state('new-article', {
-        url: '/new-article',
-        templateUrl: 'partial/new-article/new-article.html',
-        controller: 'NewArticleCtrl'
+    $stateProvider.state('app.account', {
+        'content@': {
+
+            url: '/account',
+            templateUrl: 'partial/account/account.html',
+            controller: 'AccountCtrl'
+
+        }
+
     });
-    $stateProvider.state('edit-article', {
-        url: '/edit-article/:id',
-        templateUrl: 'partial/edit-article/edit-article.html',
-        controller: 'EditArticleCtrl',
-        resolve: {
+    $stateProvider.state('app.new-project', {
+        'content@': {
+            url: '/new-project',
+            templateUrl: 'partial/new-project/new-project.html',
+            controller: 'NewProjectCtrl'
 
-            article: function (articleService, $stateParams) {
+        }
+    });
+    $stateProvider.state('app.edit-project', {
+        'content@': {
 
-                return articleService.getOne($stateParams.id);
+            url: '/edit-project/:id',
+            templateUrl: 'partial/edit-project/edit-project.html',
+            controller: 'EditProjectCtrl',
+            resolve:{
+
+                project: function (projectService, $stateParams) {
+
+                    return projectService.getOne($stateParams.id);
+                }
             }
+
+        }
+
+    });
+    $stateProvider.state('app.new-article', {
+        'content@': {
+            url: '/new-article',
+            templateUrl: 'partial/new-article/new-article.html',
+            controller: 'NewArticleCtrl'
+        }
+    });
+    $stateProvider.state('app.edit-article', {
+        'content@': {
+            url: '/edit-article/:id',
+            templateUrl: 'partial/edit-article/edit-article.html',
+            controller: 'EditArticleCtrl',
+            resolve: {
+
+                article: function (articleService, $stateParams) {
+
+                    return articleService.getOne($stateParams.id);
+                }
+            }
+
         }
     });
     /* Add New States Above */

@@ -64,8 +64,7 @@ exports.init = ()=>{
                     pageName        : 'articles'    // podatek, da ve kateri gumb mora obarvati v navigation
 
                 });
-
-
+                
             });
 
         });
