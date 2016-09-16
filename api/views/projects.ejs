@@ -9,6 +9,8 @@
 
     <% include navigation.ejs %>
 
+    <p class="pageNum">Page: <%- pageNum %></p>
+
     <div class="projects-container">
 
         <% for(var i=0; i<projects.length; i++){ %>
@@ -17,11 +19,11 @@
 
                 <div class="project-title"><b><%- projects[i].title %></b></div>
                 <br/>
-                <div class="project-author"><%- projects[i].author %></div>
+                <div class="project-author">Author(s): <%- projects[i].author %></div>
                 <br/>
-                <div class="project-dateCreated"><%- moment(projects[i].dateCreated).format('LL') %></div>
+                <div class="project-dateCreated">Finished: <%- moment(projects[i].dateCreated).format('LL') %></div>
                 <br/>
-                <a class="project-more" href="/project/<%- projects[i].id%>"> MORE ...</a>
+                <a class="read-more" href="/project/<%- projects[i].id%>"> MORE ...</a>
 
             </div>
         <%}%>

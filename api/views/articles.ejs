@@ -8,7 +8,7 @@
 
     <% include navigation.ejs %>
 
-    <p>Page: <%- pageNum %></p>
+    <p class="pageNum">Page: <%- pageNum %></p>
 
     <div class="articles-container">
 
@@ -18,14 +18,14 @@
 
                     <div class="article-title"><b><%- articles[i].title  %></b></div>
                     <br/>
-                    <div class="article-keywords"><%- articles[i].keyWords %></div>
+                    <div class="article-keywords"><b>Key words:</b> <%- articles[i].keyWords %></div>
                     <br/>
                     <div class="article-published"> Published: <%-  moment(articles[i].published).format('LL')  %>
                         by  <%- articles[i].author %>
                     </div>
                     <br/>
 
-                    <a href="/article/<%- articles[i].id %>"> READ MORE ... </a>
+                    <a href="/article/<%- articles[i].id %>" class="read-more"> READ MORE ... </a>
 
                 </div>
 
