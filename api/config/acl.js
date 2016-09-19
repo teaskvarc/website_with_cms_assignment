@@ -10,11 +10,8 @@ const list = [
             {
                 type:'user',
                 methods: ['get', 'post', 'put', 'delete']
-
             }
-
         ]
-
     },
     {
         path:'/api/article',
@@ -50,11 +47,8 @@ const list = [
             {
                 type:'user',
                 methods: ['get', 'post', 'put', 'delete']
-
             }
-
         ]
-
     },
     {
         path:'/api/project',
@@ -98,7 +92,6 @@ const list = [
             {
                 type:'user',
                 methods:['get', 'post', 'put', 'delete']
-
             }
         ]
     },

@@ -23,22 +23,21 @@ angular.module('app').config(function($stateProvider, $urlRouterProvider) {
         abstract:true,
         resolve:{
             auth:function(){
-
+                return true;
             }
         }
     });
 
     $stateProvider.state('app.home', {
-        'content@': {
-            url: '/home',
+        url: '/home',
+        'main@': {
             templateUrl: 'partial/home/home.html',
             controller: 'HomeCtrl'
         }
     });
     $stateProvider.state('app.projects', {
-        'content@': {
-
-            url: '/projects',
+        url: '/projects',
+        'main@': {
             templateUrl: 'partial/projects/projects.html',
             controller: 'ProjectsCtrl',
             resolve: {
@@ -51,9 +50,8 @@ angular.module('app').config(function($stateProvider, $urlRouterProvider) {
         }
     });
     $stateProvider.state('app.articles', {
-        'content@': {
-
-            url: '/articles',
+        url: '/articles',
+        'main@': {
             templateUrl: 'partial/articles/articles.html',
             controller: 'ArticlesCtrl',
             resolve: {
@@ -67,9 +65,9 @@ angular.module('app').config(function($stateProvider, $urlRouterProvider) {
 
     });
     $stateProvider.state('app.account', {
-        'content@': {
+        url: '/account',
+        'main@': {
 
-            url: '/account',
             templateUrl: 'partial/account/account.html',
             controller: 'AccountCtrl'
 
@@ -77,17 +75,18 @@ angular.module('app').config(function($stateProvider, $urlRouterProvider) {
 
     });
     $stateProvider.state('app.new-project', {
-        'content@': {
-            url: '/new-project',
+        url: '/new-project',
+        'main@': {
             templateUrl: 'partial/new-project/new-project.html',
             controller: 'NewProjectCtrl'
 
         }
     });
     $stateProvider.state('app.edit-project', {
-        'content@': {
+        url: '/edit-project/:id',
+        'main@': {
 
-            url: '/edit-project/:id',
+
             templateUrl: 'partial/edit-project/edit-project.html',
             controller: 'EditProjectCtrl',
             resolve:{
@@ -102,15 +101,17 @@ angular.module('app').config(function($stateProvider, $urlRouterProvider) {
 
     });
     $stateProvider.state('app.new-article', {
-        'content@': {
-            url: '/new-article',
+        url: '/new-article',
+        'main@': {
+
             templateUrl: 'partial/new-article/new-article.html',
             controller: 'NewArticleCtrl'
         }
     });
     $stateProvider.state('app.edit-article', {
-        'content@': {
-            url: '/edit-article/:id',
+        url: '/edit-article/:id',
+        'main@': {
+
             templateUrl: 'partial/edit-article/edit-article.html',
             controller: 'EditArticleCtrl',
             resolve: {
