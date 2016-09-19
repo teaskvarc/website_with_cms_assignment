@@ -1,8 +1,10 @@
-const mongoose  = require('mongoose');
-const server    = require('../../server').server;
-const bcrypt    = require('bcryptjs');
-const randToken = require ('rand-token');
+const mongoose          = require('mongoose');
+const server            = require('../../server').server;
+const bcrypt            = require('bcryptjs');
+const randToken         = require ('rand-token');
+const expressValidator  = require('express-validator');
 
+const acl = require('../../config/acl');
 const auth = require('../../helpers/auth/middleware');
 
 const AccountModel = mongoose.model('Account');
@@ -11,7 +13,7 @@ const AccountModel = mongoose.model('Account');
 module.exports = ()=>{
 
     // register
-    server.post('/api/account', (req, res) =>{
+    server.post('/api/account', auth, (req, res) =>{
 
         // na tak nacin naredim VALIDACIJO na body
 
@@ -51,7 +53,7 @@ module.exports = ()=>{
                         });
 
                 }else{
-                    res.send(err, 400);
+                    res.status(400).send(err);
                 }
             });
         });
@@ -112,12 +114,31 @@ module.exports = ()=>{
     //check login
     server.post('/api/account/checkLogin', auth, (req, res) =>{
 
-     res.send('Account ' + req.account.email + ' logged in');
-       
+        console.log(req.account.role);
+
+        const permissions = acl.getPermissionsForRole(req.account.role);
+        res.send(permissions);
 
 
     });
 
 
+    server.get('/api/account/logout', auth, (req, res)=> {
 
-};
+        const accountId = req.account._id;
+        const token = req.headers.authorization;
+
+        AccountModel.findByIdAndUpdate(accountId, {
+                $pull: {
+                    tokens: {value: token}
+                }
+            }, {new:true})
+            .then((doc)=>{
+                res.sendStatus(200);
+            })
+            .catch((err)=>{
+                res.send(err, 400);
+            });
+    });
+
+}

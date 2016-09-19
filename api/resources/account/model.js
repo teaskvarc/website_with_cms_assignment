@@ -7,6 +7,7 @@ const schema = new mongoose.Schema({
     dateCreated     : { type: Date, default: Date.now },
     name            : String,
     lastLogin       : { type: Date },
+    role            : {type: String, default:'user'},
     tokens          : [{
 
         value: String,
