@@ -28,6 +28,7 @@
     "ng-annotate": "^1.2.1"
   },
   "dependencies": {
+    "bcryptjs": "^2.3.0",
     "ng-annotate": "^1.2.1"
   }
 }

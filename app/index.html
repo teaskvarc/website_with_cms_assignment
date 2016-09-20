@@ -26,6 +26,10 @@
   <script src="bower_components/ng-file-upload/ng-file-upload-all.min.js"></script>
   <script src="bower_components/tinymce-dist/tinymce.min.js"></script>
   <script src="bower_components/angular-ui-tinymce/dist/tinymce.min.js"></script>
+  <script src="bower_components/ng-lodash/build/ng-lodash.min.js"></script>
+  <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+  <script src="bower_components/localforage/dist/localforage.min.js"></script>
+  <script src="bower_components/angular-localforage/dist/angular-localForage.js"></script>
   <!-- Add New Bower Component JS Above -->
 
 
@@ -44,15 +48,22 @@
   <script src="partial/edit-article/edit-article.js"></script>
   <script src="partial/login/login.js"></script>
   <script src="service/login-service.js"></script>
+  <script src="service/request-interceptor-service.js"></script>
+  <script src="service/data-service.js"></script>
+
   <!-- Add New Component JS Above -->
 
 
+<div class="cover-wrapper" ui-view="cover" ng-if="isCoverView"></div>
 
-  <div ng-include="'partial/sidebar/sidebar.html'"></div>
+<div class="wrapper" ng-if="!isCoverView && isLoggedIn">
 
-  <div ui-view="cover" class="cover-view"></div>
+    <div class="sidebar-container" ui-view="sidebar"></div>
 
-  <div ui-view="main" class="main-view"></div>
+    <div class="main-view" ui-view="main" ng-class="{'content-wrapper-login':isCoverView}"></div>
+
+
+</div>
 
 </body>
 </html>

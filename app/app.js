@@ -4,132 +4,199 @@ angular.module('app', [
     'ui.router',
     'ngAnimate',
     'ngFileUpload',
-    'ui.tinymce'
+    'ui.tinymce',
+    'ngLodash',
+    'LocalForageModule',
+    'ngSanitize'
+
 ]);
 
 angular.module('app').constant('NET',{API_URL:'http://localhost:3010'});
 
-angular.module('app').config(function($stateProvider, $urlRouterProvider) {
+angular.module('app').config(function($stateProvider, $urlRouterProvider, $httpProvider) {
 
-    $stateProvider.state('login',{
-       'cover@':{
-           url:'/login',
-           templateUrl:'partial/login/login.html',
-           controller:'LoginCtrl'
-       }
-    });
-
+    // na ta state ne moremo navigirati, nima URL, top state
     $stateProvider.state('app', {
         abstract:true,
-        resolve:{
-            auth:function(){
-                return true;
+        views:{
+            sidebar:{
+                templateURL:'partial/sidebar/sidebar.html',
+                controller:'SidebarCtrl'
             }
         }
     });
 
     $stateProvider.state('app.home', {
         url: '/home',
-        'main@': {
-            templateUrl: 'partial/home/home.html',
-            controller: 'HomeCtrl'
+        views: {
+            'main@': {
+                templateUrl: 'partial/home/home.html',
+                controller: 'HomeCtrl'
+            }
         }
     });
     $stateProvider.state('app.projects', {
         url: '/projects',
-        'main@': {
-            templateUrl: 'partial/projects/projects.html',
-            controller: 'ProjectsCtrl',
-            resolve: {
-                projects: function (projectService) {
+        views:{
+            'main@': {
+                templateUrl: 'partial/projects/projects.html',
+                controller: 'ProjectsCtrl',
+                resolve: {
+                    projects: function (projectService) {
 
-                    return projectService.getList();
+                        return projectService.getList();
 
+                    }
                 }
             }
         }
     });
     $stateProvider.state('app.articles', {
         url: '/articles',
-        'main@': {
-            templateUrl: 'partial/articles/articles.html',
-            controller: 'ArticlesCtrl',
-            resolve: {
+        views:{
+            'main@': {
+                templateUrl: 'partial/articles/articles.html',
+                controller: 'ArticlesCtrl',
+                resolve: {
 
-                articles: function (articleService) {
+                    articles: function (articleService) {
 
-                    return articleService.getList();
+                        return articleService.getList();
+                    }
                 }
             }
         }
-
     });
     $stateProvider.state('app.account', {
         url: '/account',
-        'main@': {
+        views: {
+            'main@': {
+                templateUrl: 'partial/account/account.html',
+                controller: 'AccountCtrl'
 
-            templateUrl: 'partial/account/account.html',
-            controller: 'AccountCtrl'
-
+            }
         }
-
     });
     $stateProvider.state('app.new-project', {
         url: '/new-project',
-        'main@': {
-            templateUrl: 'partial/new-project/new-project.html',
-            controller: 'NewProjectCtrl'
-
+        views:{
+            'main@': {
+                templateUrl: 'partial/new-project/new-project.html',
+                controller: 'NewProjectCtrl'
+            }
         }
+
     });
     $stateProvider.state('app.edit-project', {
         url: '/edit-project/:id',
-        'main@': {
+        views:{
+            'main@': {
 
+                templateUrl: 'partial/edit-project/edit-project.html',
+                controller: 'EditProjectCtrl',
+                resolve:{
 
-            templateUrl: 'partial/edit-project/edit-project.html',
-            controller: 'EditProjectCtrl',
-            resolve:{
+                    project: function (projectService, $stateParams) {
 
-                project: function (projectService, $stateParams) {
-
-                    return projectService.getOne($stateParams.id);
+                        return projectService.getOne($stateParams.id);
+                    }
                 }
+
             }
-
         }
-
     });
     $stateProvider.state('app.new-article', {
         url: '/new-article',
-        'main@': {
+        views:{
+            'main@': {
 
-            templateUrl: 'partial/new-article/new-article.html',
-            controller: 'NewArticleCtrl'
+                templateUrl: 'partial/new-article/new-article.html',
+                controller: 'NewArticleCtrl'
+            }
         }
     });
     $stateProvider.state('app.edit-article', {
         url: '/edit-article/:id',
-        'main@': {
+        views:{
+            'main@': {
 
-            templateUrl: 'partial/edit-article/edit-article.html',
-            controller: 'EditArticleCtrl',
-            resolve: {
+                templateUrl: 'partial/edit-article/edit-article.html',
+                controller: 'EditArticleCtrl',
+                resolve: {
 
-                article: function (articleService, $stateParams) {
+                    article: function (articleService, $stateParams) {
 
-                    return articleService.getOne($stateParams.id);
+                        return articleService.getOne($stateParams.id);
+                    }
                 }
             }
+        }
 
+    });
+
+    $stateProvider.state('login', {
+        url: '/login',
+        views:{
+            cover:{
+                templateUrl:'partial/login/login.html',
+                controller:'LoginCtrl'
+            }
         }
     });
+
+
     /* Add New States Above */
-    $urlRouterProvider.otherwise('/home');
+    $urlRouterProvider.otherwise('/login');
+
+    $httpProvider.interceptors.push('requestInterceptorService');
 
 });
 
-angular.module('app').run(function($rootScope) {
+angular.module('app').run(function($rootScope, dataService) {
+
+    $rootScope.hasPermission = function(path, method){
+
+        var allow = false;
+
+        angular.forEach(dataService.model.userPermissions, function (permission){
+
+            if(permission.path === path && _.includes(permission.methods, method)){
+
+                allow = true;
+
+            }
+        });
+
+        return allow;
+
+    };
+
+    $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams, options){
+
+        console.log(toState);
+
+        switch(toState.name){
+            case 'login':
+                $rootScope.isCoverView = true;
+                break;
+            case 'register':
+                $rootScope.isCoverView = true;
+                break;
+            case 'confirm-registration':
+                $rootScope.isCoverView = true;
+                break;
+            case 'forgotten':
+                $rootScope.isCoverView = true;
+                break;
+            case 'reset':
+                $rootScope.isCoverView = true;
+                break;
+            default:
+                $rootScope.isCoverView = false;
+                break;
+        }
+
+    });
 
     $rootScope.safeApply = function(fn) {
         var phase = $rootScope.$$phase;
