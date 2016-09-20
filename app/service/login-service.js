@@ -1,7 +1,7 @@
 angular.module('app').factory('loginService',function(
 
     $timeout,
-    $rootscope,
+    $rootScope,
     $http,
     dataService,
     $localForage,
@@ -22,7 +22,7 @@ angular.module('app').factory('loginService',function(
 
                             dataService.model.loggedIn = true;
                             dataService.model.userPermissions = res.data;
-                            $rootscope.isLoggedIn = true;
+                            $rootScope.isLoggedIn = true;
                             return res.data;
                         })
                         .catch(function (err) {

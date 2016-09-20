@@ -23,6 +23,11 @@ angular.module('app').config(function($stateProvider, $urlRouterProvider, $httpP
                 templateURL:'partial/sidebar/sidebar.html',
                 controller:'SidebarCtrl'
             }
+        },
+        resolve: {
+            loggedIn:function (loginService) {
+                return loginService.isLoggedIn();
+            }
         }
     });
 
