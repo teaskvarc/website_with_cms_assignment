@@ -53,9 +53,10 @@
 
   <!-- Add New Component JS Above -->
 
-
+<!-- ta view se bo videl samo, ce dolocimo v app.js, isCoverView = true, se ta pojavi-->
 <div class="cover-wrapper" ui-view="cover" ng-if="isCoverView"></div>
 
+<!-- ce ni coverView in ce smo login, nam pokazi spodnjo vsebino -->
 <div class="wrapper" ng-if="!isCoverView && isLoggedIn">
 
     <div class="sidebar-container" ui-view="sidebar"></div>

@@ -6,7 +6,7 @@ angular.module('app').controller('LoginCtrl',function(
 ){
 
     $scope.NET = NET;
-    
+
     $scope.user = {
 
         email:null,

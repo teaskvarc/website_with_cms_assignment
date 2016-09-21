@@ -12,8 +12,8 @@ const AccountModel = mongoose.model('Account');
 
 module.exports = ()=>{
 
-    // register
-    server.post('/api/account', auth, (req, res) =>{
+    // register   =  kot drugi paramter pride:  auth
+    server.post('/api/account', (req, res) =>{
 
         // na tak nacin naredim VALIDACIJO na body
 

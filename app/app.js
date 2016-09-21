@@ -20,7 +20,7 @@ angular.module('app').config(function($stateProvider, $urlRouterProvider, $httpP
         abstract:true,
         views:{
             sidebar:{
-                templateURL:'partial/sidebar/sidebar.html',
+                templateUrl:'partial/sidebar/sidebar.html',
                 controller:'SidebarCtrl'
             }
         },

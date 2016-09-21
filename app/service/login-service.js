@@ -16,7 +16,7 @@ angular.module('app').factory('loginService',function(
 
             return loginService.getToken()
                 .then(function () {
-                    return $http.post(NET.API_URL + '/api/account/checkLogin')
+                    return $http.post(NET.API_URL + '/api/account/checkLogin',{})
                         .then(function (res) {
                             console.log('checklogin');
 
@@ -38,7 +38,8 @@ angular.module('app').factory('loginService',function(
             return $http.post(NET.API_URL + '/api/account/login', userData)
                 .then(function (res) {
 
-                    $rootscope.isLoggedIn = true;
+                    $rootScope.isLoggedIn = true;
+                    console.log(res.data);
                     return loginService.setToken(res.data);
 
                 })
