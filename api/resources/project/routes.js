@@ -4,6 +4,7 @@ const multer    = require('multer');
 
 const crypto    = require('crypto');
 const mime      = require('mime');
+const auth      = require('../../helpers/auth/middleware');
 
 
 
@@ -24,7 +25,7 @@ const upload = multer({ storage: storage });
 
 module.exports = ()=>{
 
-    server.post('/api/upload', upload.single('file'), function (req, res) {
+    server.post('/api/upload',auth, upload.single('file'), function (req, res) {
 
         console.log(req.file);
         res.send(req.file);
@@ -32,7 +33,7 @@ module.exports = ()=>{
     });
 
 
-    server.get('/api/projects', (req, res)=>{
+    server.get('/api/projects',auth, (req, res)=>{
 
           const Project = mongoose.model('Project');
 
@@ -48,7 +49,7 @@ module.exports = ()=>{
 
       });
 
-    server.get('/api/project/:id', (req, res)=>{
+    server.get('/api/project/:id', auth,(req, res)=>{
 
         const projectId = req.params.id;
 
@@ -81,7 +82,7 @@ module.exports = ()=>{
 
 
     // route, ki bo vstavil v bazo projekt
-    server.post('/api/project', (req,res)=>{
+    server.post('/api/project', auth, (req,res)=>{
 
         //req, ko pride na server prinese s sabo body
         const data = req.body;
@@ -100,7 +101,7 @@ module.exports = ()=>{
         });
     });
 
-    server.delete('/api/project/:id', (req, res)=>{
+    server.delete('/api/project/:id',auth, (req, res)=>{
 
         const projectId = req.params.id;
 
@@ -119,7 +120,7 @@ module.exports = ()=>{
 
     });
 
-    server.put('/api/project/:id', (req, res)=>{
+    server.put('/api/project/:id',auth, (req, res)=>{
 
         const projectId     = req.params.id;
         const projectData   = req.body;
