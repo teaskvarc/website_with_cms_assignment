@@ -32,7 +32,7 @@ angular.module('app').controller('NewProjectCtrl',function(
         $scope.isUploading = true;
 
         Upload.upload({
-            url: NET.API_URL+'/upload',
+            url: NET.API_URL + '/api/upload',
             data: {
                 file: file
             }
@@ -65,7 +65,7 @@ angular.module('app').controller('NewProjectCtrl',function(
                 console.log(res);
 
                 $scope.isCreating = false;
-                $state.go('projects');
+                $state.go('app.projects');
             });
 
     };

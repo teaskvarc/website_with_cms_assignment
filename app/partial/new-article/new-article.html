@@ -3,10 +3,12 @@
     <h2>NEW ARTICLE</h2>
     <hr/>
     <label>Title*</label>
-    <input ng-model="article.title" type="text" name="title" class="form-control" ng-minlength="4"/>
+    <input ng-model="article.title" type="text" name="title" class="form-control" ng-minlength="4"
+        placeholder="Pass the title having at least 4 characters"/>
     <br/>
     <label>Key words</label>
-    <input ng-model="article.keyWords" type="text" name="keyWords" class="form-control"/>
+    <input ng-model="article.keyWords" type="text" name="keyWords" class="form-control"
+           placeholder="Pass at least 2 key words"/>
     <br/>
     <label>Content</label>
     <textarea ui-tinymce ng-model="article.content" placeholder="Article content" name="content"
