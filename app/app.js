@@ -11,7 +11,7 @@ angular.module('app', [
 
 ]);
 
-angular.module('app').constant('NET',{API_URL:'http://teaskvarc.website:3010'});
+angular.module('app').constant('NET',{API_URL:'http://api.teaskvarc.website'});
 
 angular.module('app').config(function($stateProvider, $urlRouterProvider, $httpProvider) {
 
